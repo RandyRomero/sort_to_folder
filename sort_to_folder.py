@@ -11,7 +11,7 @@ bad_symbols = '#%&{}\\<>*&?/$!\'":@'
 def single_out_files(path, keyword):
     regex = re.compile(keyword, re.IGNORECASE)
     files = os.listdir(path)
-    matched_files = [x for x in files if re.search(regex, x)]
+    matched_files = [x for x in files if re.search(regex, x) and os.path.isfile(os.path.join(path, x))]
     return matched_files
 
 
